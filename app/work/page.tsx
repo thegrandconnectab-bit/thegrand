@@ -79,6 +79,16 @@ const portraitVideoSources = [
     description: "Quick look at how our participants feel after each meetup.",
     youtubeId: "VoMt3Ua_wjY",
   },
+  {
+    title: "Program Walkthrough",
+    description: "Full explainer on how Grand Connect sessions flow from welcome to wrap-up.",
+    youtubeId: "n5B2HC46raY",
+  },
+  {
+    title: "Volunteer Briefing",
+    description: "Training clip for new mentors on supporting elders with patience and structure.",
+    youtubeId: "h6bYasqezlg",
+  },
 ];
 
 const portraitVideos = Array.from(
