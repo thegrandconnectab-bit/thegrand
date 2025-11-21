@@ -79,6 +79,13 @@ const portraitVideoSources = [
     description: "Quick look at how our participants feel after each meetup.",
     youtubeId: "VoMt3Ua_wjY",
   },
+];
+
+const portraitVideos = Array.from(
+  new Map(portraitVideoSources.map((video) => [video.youtubeId, video])).values(),
+);
+
+const programVideos = [
   {
     title: "Program Walkthrough",
     description: "Full explainer on how Grand Connect sessions flow from welcome to wrap-up.",
@@ -91,13 +98,42 @@ const portraitVideoSources = [
   },
 ];
 
-const portraitVideos = Array.from(
-  new Map(portraitVideoSources.map((video) => [video.youtubeId, video])).values(),
-);
-
 export default function WorkPage() {
   return (
     <div className="space-y-16">
+      <section className="space-y-6 rounded-[32px] border border-[var(--card-border)] bg-[var(--surface)] p-8">
+        <div className="space-y-3">
+          <p className="text-sm uppercase tracking-[0.3em] font-bold text-orange-500">Program overview</p>
+          <h2 className="text-3xl font-bold text-[var(--text-primary)]">How the labs run</h2>
+          <p className="text-[var(--text-secondary)]">
+            Need the bigger picture? These longer walkthroughs are perfect for sharing with partners and new volunteer
+            cohorts before they step into a Grand Connect lab.
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          {programVideos.map((video) => (
+            <div
+              key={video.youtubeId}
+              className="space-y-3 rounded-2xl border border-[var(--card-border)] bg-[var(--surface-strong)] p-4"
+            >
+              <div className="space-y-1">
+                <h3 className="text-lg font-semibold text-[var(--text-primary)]">{video.title}</h3>
+                <p className="text-sm text-[var(--text-secondary)]">{video.description}</p>
+              </div>
+              <div className="overflow-hidden rounded-xl border border-[var(--card-border)]">
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.youtubeId}?rel=0`}
+                  title={video.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="h-[320px] w-full"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="space-y-6 rounded-[32px] border border-[var(--card-border)] bg-[var(--surface)] p-8">
         <div className="space-y-3">
           <p className="text-sm uppercase tracking-[0.3em] font-bold text-orange-500">Grand Connect sessions</p>
